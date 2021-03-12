@@ -1,2 +1,14 @@
 
 **/.DS_Store
+
+data/data.zip
+data/imagenet-mini/
+data/imagenet_vectors.csv
+data/example_embeddings.csv
+data/imagenet_vectors_w_ids.csv
+
+wal/
+db/
+logs/
+
+notebook/2_Using_ImageNet_Milvus_Collection.ipynb
