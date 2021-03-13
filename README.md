@@ -13,7 +13,7 @@ The `notebooks` directory contains the `1_End_to_End_Milvus_Image_Similarity_Exa
 
 I invite you to take a look at the `utilities` directory, which contains the documented utilities functions and classes that help create your image similarity system faster. For convenience, I quickly generated documentation for the functions used here using `pdoc3`. 
 
-- <a href="html/index.html">Milvus Utilities Documentation</a>
+- <a href="https://pedrojrv.github.io/milvus_image_retrieval/">Milvus Utilities Documentation</a>
 
 # Before you Begin
 
@@ -44,7 +44,7 @@ milvusdb/milvus:1.0.0-cpu-d030521-1ea92e
 
 You can make sure your `milvus` server is up and running by typing `docker ps` in the terminal and reading the output.
 
-Next, open `jupyter notebooks` from your favorite python environment and read through the image retrieval use case and code. I hope you enjoy it as much as I did while developing this example. 
+Next, open `jupyter notebooks` from your favorite python environment and read through the `1_End_to_End_Milvus_Image_Similarity_Example.ipynb` image retrieval use case and code. I hope you enjoy it as much as I did while developing this example. 
 
 # Suggestions
 
@@ -53,9 +53,9 @@ Next, open `jupyter notebooks` from your favorite python environment and read th
 - For both text and image vectors, I would suggest developing some utility functions for not only extracting but transferring near/matched files to the desired location. For example, downloading the top_k nearest images rather than just obtaining the Milvus ids.
 - In general, I feel like Milvus has the potential to provide an even more seamless transition from data to vector database if more utility functions are developed to support different data types out of the box.
 - Spacy, an NLP, the library provides pre-trained models for text embedding generation. A suggestion for Milvus would be to have a couple of pre-trained models for image, text, etc. embedding generation on the fly.
-- In my example, I had to keep track of the id-image_path relationship using a pandas DataFrame. This can be done using a SQL database or any other database type but it would be nice if Milvus provides a way to also include user-provided metadata information including images URLs, string-like file paths, etc.  I could not find any labeling functionality other than an option to manually provide ids. 
-- When running `status, result = milvus.count_entities(collection_name)` I sometimes ran into an error since I did not know that the collection takes a couple of seconds to update. I mostly had issues while running python scripts one after another. 
-
+- In my example, I had to keep track of the (milvus id, image_path) relationship using a pandas DataFrame. This can be done using a SQL database or any other database type but it would be nice if Milvus provides a way to also include user-provided metadata information including image URLs, string-like file paths, etc.  I could not find any labeling functionality other than an option to manually provide ids. 
+- The`client.count_entities(collection_name)` may take a couple of seconds to update for large insertions. I sometimes ran into an error with quick assertions since the code was not giving time to Milvus to update.  
+- A functionality to download the files corresponding to the nearest neighbors can be useful. I implemented an example in the `milvus_utilities.py` file. 
 
 
 # Bugs in Webpage
