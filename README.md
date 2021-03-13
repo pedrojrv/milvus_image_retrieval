@@ -84,4 +84,14 @@ docker run -d --name milvus_cpu_1.0.0 \
 -v /Users/pedrovicentevaldez/Desktop/milvus_image_retrieval/logs:/var/lib/milvus/logs \
 -v /Users/pedrovicentevaldez/Desktop/milvus_image_retrieval/wal:/var/lib/milvus/wal \
 milvusdb/milvus:1.0.0-cpu-d030521-1ea92e
+
+
+docker run -d --name milvus_cpu_1.0.0 ^
+-p 19530:19530 ^
+-p 19121:19121 ^
+-v C:/Users/Pedro/Desktop/milvus_image_retrieval/db:/var/lib/milvus/db ^
+-v C:/Users/Pedro/Desktop/milvus_image_retrieval/conf:/var/lib/milvus/conf ^
+-v C:/Users/Pedro/Desktop/milvus_image_retrieval/logs:/var/lib/milvus/logs ^
+-v C:/Users/Pedro/Desktop/milvus_image_retrieval/wal:/var/lib/milvus/wal ^
+milvusdb/milvus:1.0.0-cpu-d030521-1ea92e
 ``` -->

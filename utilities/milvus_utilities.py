@@ -1,4 +1,6 @@
 import numpy as np
+import os
+from shutil import copyfile
 from milvus import Milvus, IndexType, MetricType, Status
 
 def create_collection(client, collection_name, embedding_dim, reset=False):
@@ -67,3 +69,30 @@ def insert_embeddings(client, collection_name, embedding_vectors, buffer_size=25
         else:
             print("Insertion succesfull.")
     return all_ids
+
+
+def download_nearest_files(results, inventory, path):
+    """Downloads the nearest neighbor files for a given result.
+
+    The inventory argument must be a pandas DataFrame and must at least contain two features named
+    image_path and milvus_id. The former representing the path to the images in the filesystem and 
+    the latter representing the assigned milvus ids.
+
+    Args:
+        results (milvus.client.abstract.TopKQueryResult): resulting object from milvus query.
+        inventory (pd.DataFrame): Dataframe containing the image inventory. Read above for more information.
+        path (str): Path-like string indicating directory where the files will be saved to.
+
+    Returns:
+        None
+    """    
+    if not os.path.isdir(path):
+        os.makedirs(path)
+
+    for i in results.id_array[0]:
+        resulting_df = inventory[inventory.milvus_ids == i]
+        image_path = resulting_df.image_path.values[0]
+        image_name = os.path.basename(image_path)
+        new_path = os.path.join(path, image_name)
+        copyfile(image_path, new_path)
+    return None

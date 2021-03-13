@@ -1,3 +1,4 @@
+.vscode/
 
 **/.DS_Store
 
@@ -12,3 +13,4 @@ db/
 logs/
 
 notebook/2_Using_ImageNet_Milvus_Collection.ipynb
+
