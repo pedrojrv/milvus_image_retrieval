@@ -46,16 +46,29 @@ You can make sure your `milvus` server is up and running by typing `docker ps` i
 
 Next, open `jupyter notebooks` from your favorite python environment and read through the `1_End_to_End_Milvus_Image_Similarity_Example.ipynb` image retrieval use case and code. I hope you enjoy it as much as I did while developing this example. 
 
-# Suggestions
 
-- The `/home/` directory in MacOS is forbidden even with administrator privileges. At first, the documentation seems to indicate that the user must use this directory. It would be nice to mention that the path is flexible (especially for Windows).
-- It would be nice to have more interactive examples for image similarity or document retrieval with toy datasets. These use cases can help people get started faster. I found a couple of them on Medium afterward which was nice. 
+# First Impressions, Suggestions, and Value Proposition
+
+Milvus was easy to install and to integrate with the embedding generation objects. The documentation is really well written and makes it easy to get started quickly. The docker configuration file in particular explained really well the options in terms of memory management. Some overall suggestions include:
+
+
+- In the installation instructions, it is suggested to create a directory within the `home` directory. The `/home/` directory in MacOS is forbidden even with administrator privileges. At first, the documentation seems to indicate that the user must use this directory. It would be nice to mention that the path is flexible (especially for Windows where docker paths are not Linux/MacOS based).
 - For both text and image vectors, I would suggest developing some utility functions for not only extracting but transferring near/matched files to the desired location. For example, downloading the top_k nearest images rather than just obtaining the Milvus ids.
 - In general, I feel like Milvus has the potential to provide an even more seamless transition from data to vector database if more utility functions are developed to support different data types out of the box.
 - Spacy, an NLP, the library provides pre-trained models for text embedding generation. A suggestion for Milvus would be to have a couple of pre-trained models for image, text, etc. embedding generation on the fly.
 - In my example, I had to keep track of the (milvus id, image_path) relationship using a pandas DataFrame. This can be done using a SQL database or any other database type but it would be nice if Milvus provides a way to also include user-provided metadata information including image URLs, string-like file paths, etc.  I could not find any labeling functionality other than an option to manually provide ids. 
 - The`client.count_entities(collection_name)` may take a couple of seconds to update for large insertions. I sometimes ran into an error with quick assertions since the code was not giving time to Milvus to update.  
 - A functionality to download the files corresponding to the nearest neighbors can be useful. I implemented an example in the `milvus_utilities.py` file. 
+- A tutorial application showing the speed improvements of Milvus against other traditional Nearest Neighbors model implementations.
+
+
+Other potential applications include:
+
+- Image retrieval for recommendation systems (i.e. fashion, products, shopping) or clustering-based applications for album or story generation (i.e. image clustering)
+- Cybersecurity for on the fly novelty and outlier detection (i.e. malware detection)
+- Audio Similarity and retrieval and Natural Language Processing
+
+By gathering industry feedback and needs, Milvus has the potential to expand its capabilities to support application-specific objects. A set of pre-trained models would make a good addition for those industries looking to get started quickly and not worry about model training (at first). Fine tunning capabilities can be offered for an enhanced client and user experience. While Milvus is first and foremost a vector similarity search engine, capabilities for adding user-provided metadata could enhance the product even more. Connecting vector's ids with external databases (i.e. SQL) can make object retrieval seamless and easy. For example, vectors are assigned a unique ID but adding further metadata including image location in the filesystem or URLs for cloud storage for later extraction. I understand that these capabilities can easily be coded by the client, but toy functions can help them understand the product better. 
 
 
 # Bugs in Webpage
@@ -79,6 +92,8 @@ We recommend using Milvus Sizing Tool to estimate the hardware resources require
 
 For example, the `create_index` documentation link seems to be broken: https://pymilvus.readthedocs.io/en/latest/api.html#milvus.Milvus.create_index
 
+
+After you accomplish the task, we'd like to hear more about your thoughts and impressions on your experience with setting things up, to see if you can elaborate more on its potential use cases in the industry, and to hear your understanding on the value proposition of milvus?
 
 
 <!-- ```bash
