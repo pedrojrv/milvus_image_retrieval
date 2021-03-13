@@ -1,13 +1,19 @@
 # Zilliz/Milvus Coding Assignment
 
 
-In this coding assignment, I will show how to extract similar images using `python` and `milvus`. Embeddings for the entire ImageNet dataset have been generated using the ResNet50 architecture and pushed into a `milvus` collection called `imagenet_collection`. 
+In this coding assignment, I will show how to extract similar images using `python` and `milvus`. Embeddings for the entire ImageNet dataset have been generated using the ResNet50 architecture and will be pushed into a `milvus` collection called `imagenet_collection`. 
 
-The `notebooks` directory contains the `1_End_to_End_Milvus_Image_Similarity_Example.ipynb` notebook which goes step by step on how to build the collection from scratch and how to do it for your very own directory of images easily. I invite you to take a look at the `utilities` directory, which contains the documented utilities functions and classes that help create your image similarity system faster. By the end, you'll learn how to use these utilities to extract images and plot them. For example:
+The `notebooks` directory contains the `1_End_to_End_Milvus_Image_Similarity_Example.ipynb` notebook which goes step by step on how to build the collection from scratch and how to do it for your very own directory of images easily. By the end, you'll learn how to use these utilities to extract images and plot them. For example:
 
 <p align="center">
   <img src="assets/example_extraction.png" width="500">
 </p>
+
+# Documentation
+
+I invite you to take a look at the `utilities` directory, which contains the documented utilities functions and classes that help create your image similarity system faster. For convenience, I quickly generated documentation for the functions used here using `pdoc3`. 
+
+- <a href="html/index.html">Milvus Utilities Documentation</a>
 
 # Before you Begin
 
